@@ -1,9 +1,10 @@
 # The Elements of Computing Systems (Nand2Tetris)
-Building a Modern Computer from First Principles
-_By Noam Nisan & Shimon Shocken_
+
+_Building a Modern Computer from First Principles
+By Noam Nisan & Shimon Shocken_
 ---
 
-This project is to document my journey of creating a computer system from the ground up as I work through the different sections of **The Elements of Computing Systems** book.
+This project is to document my journey of creating a computer system from the ground up as I work through the different sections of **The Elements of Computing Systems** (second edition) book.
 
 ![Computer Systems Diagram](./static/computer-system-diagram.jpg)
 
