@@ -41,25 +41,33 @@
           <string>Not Gate</string>
         </entry>
       </elementAttributes>
-      <pos x="360" y="40"/>
+      <pos x="360" y="60"/>
     </visualElement>
   </visualElements>
   <wires>
     <wire>
       <p1 x="300" y="160"/>
-      <p2 x="380" y="160"/>
+      <p2 x="360" y="160"/>
     </wire>
     <wire>
       <p1 x="480" y="160"/>
       <p2 x="560" y="160"/>
     </wire>
     <wire>
-      <p1 x="380" y="140"/>
-      <p2 x="380" y="160"/>
+      <p1 x="360" y="180"/>
+      <p2 x="380" y="180"/>
     </wire>
     <wire>
-      <p1 x="380" y="160"/>
-      <p2 x="380" y="180"/>
+      <p1 x="360" y="140"/>
+      <p2 x="380" y="140"/>
+    </wire>
+    <wire>
+      <p1 x="360" y="140"/>
+      <p2 x="360" y="160"/>
+    </wire>
+    <wire>
+      <p1 x="360" y="160"/>
+      <p2 x="360" y="180"/>
     </wire>
   </wires>
   <measurementOrdering/>

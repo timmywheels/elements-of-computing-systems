@@ -41,7 +41,7 @@
           <string>XOR Gate</string>
         </entry>
       </elementAttributes>
-      <pos x="400" y="100"/>
+      <pos x="360" y="100"/>
     </visualElement>
     <visualElement>
       <elementName>NAnd</elementName>
