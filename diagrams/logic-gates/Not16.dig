@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>1</version>
+  <attributes/>
+  <visualElements>
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>Not16 Gate</string>
+        </entry>
+      </elementAttributes>
+      <pos x="500" y="240"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>In</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>2</int>
+        </entry>
+      </elementAttributes>
+      <pos x="400" y="340"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>Out</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>2</int>
+        </entry>
+      </elementAttributes>
+      <pos x="720" y="340"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Not</elementName>
+      <elementAttributes/>
+      <pos x="560" y="340"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Not</elementName>
+      <elementAttributes/>
+      <pos x="560" y="360"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Input Splitting</string>
+          <string>2</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>1,1</string>
+        </entry>
+      </elementAttributes>
+      <pos x="480" y="340"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Input Splitting</string>
+          <string>1,1</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>2</string>
+        </entry>
+      </elementAttributes>
+      <pos x="660" y="340"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>0..15</string>
+        </entry>
+      </elementAttributes>
+      <pos x="500" y="400"/>
+    </visualElement>
+  </visualElements>
+  <wires>
+    <wire>
+      <p1 x="600" y="340"/>
+      <p2 x="660" y="340"/>
+    </wire>
+    <wire>
+      <p1 x="680" y="340"/>
+      <p2 x="720" y="340"/>
+    </wire>
+    <wire>
+      <p1 x="400" y="340"/>
+      <p2 x="480" y="340"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="340"/>
+      <p2 x="560" y="340"/>
+    </wire>
+    <wire>
+      <p1 x="600" y="360"/>
+      <p2 x="660" y="360"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="360"/>
+      <p2 x="560" y="360"/>
+    </wire>
+  </wires>
+  <measurementOrdering/>
+</circuit>
