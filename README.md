@@ -2,6 +2,8 @@
 Building a Modern Computer from First Principles
 By Noam Nisan & Shimon Shocken
 
+![Computer Systems Diagram](./static/computer-system-diagram.jpg)
+
 ## Resources:
 - Book: https://mitpress.mit.edu/books/elements-computing-systems-second-edition
 - Website: https://www.nand2tetris.org/
