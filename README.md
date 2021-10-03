@@ -22,17 +22,17 @@ This project is to document my journey of creating a computer system from the gr
 
 ## Contents
 ### Hardware
-- [X] Boolean Logic / Logic Gates
-- [ ] Boolean Arithmetic / Arithmetic Logic Unit (ALU)
-- [ ] Memory / Random Access Memory (RAM)
-- [ ] Machine Language
-- [ ] Computer Architecture
-- [ ] Assembler
+- [X] [Boolean Logic](./notes/01-boolean-logic.md)
+- [ ] [Boolean Arithmetic](./notes/02-boolean-arithmetic.md)
+- [ ] [Memory](./notes/03-memory.md)
+- [ ] [Machine Language](./notes/04-machine-language.md)
+- [ ] [Computer Architecture](./notes/05-computer-architecture.md)
+- [ ] [Assembler](./notes/06-assembler.md)
 
 ### Software
-- [ ] Virtual Machine I - Processing
-- [ ] Virtual Machine II - Control
-- [ ] High-Level Language
-- [ ] Compiler I - Syntax Analysis
-- [ ] Compiler II - Code Generation
-- [ ] Operating System
+- [ ] [Virtual Machine I - Processing](./notes/07-virtual-machine-processing.md)
+- [ ] [Virtual Machine II - Control](./notes/08-virtual-machine-control.md)
+- [ ] [High-Level Language](./notes/09-high-level-language.md)
+- [ ] [Compiler I - Syntax Analysis](./notes/10-compiler-syntax-analysis.md)
+- [ ] [Compiler II - Code Generation](./notes/11-compiler-code-generation.md)
+- [ ] [Operating System](./notes/12-operating-system.md)
