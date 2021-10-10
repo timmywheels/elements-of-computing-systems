@@ -72,3 +72,62 @@ The **Incrementer** chip is designed to add `inc` (`1`) to a 16-bit input, `a`. 
 ### Incrementer Chip Diagram
 ![Incrementer Chip Diagram](../static/02-boolean-arithmetic/incrementer.png)
 
+## Arithmetic Logic Unit (ALU)
+The **ALU** chip is the computational centerpiece of the CPU. It is designed to take in two 16-bit inputs, `a` & `b` and then perform numerous arithmatic operations on the inputs and then returning the output `sum`
+
+### ALU Chip API
+|Key|Value|
+|---|---|
+|Input| `a[16]`,`b[16]`, `zx`, `nx`, `zy`, `ny`, `f`, `no` |
+|Output| `out[16]`, `zr`, `ng` |
+|Function| `if (zx) x = 0, if (nx) x = !x, if (zy) y = 0, if (ny) y = !y, if (f) out = x else out = x&y, if (no) out = !out, if (out == 0) zr = 1 else zr = 0, if (out < 0) ng = 1 else ng = 0`|
+
+Additional ALU API Details:
+```
+zx: zero the a input
+if (zx) x = 0 // 16-bit zero constant
+
+nx: negate the a input
+if (nx) x = !x // bit-wise negation
+
+zy: zero the b input
+if (zy) y = 0 // 16-bit zero constant
+
+ny: negate the b input
+if (ny) y = !y // bit-wise negation
+
+f: if f == 1 out = add(x, y) else out = and(x, y)
+if (f) out = x // integer two's complement addition
+else out = x&y // bit-wise and
+
+no: negate the out output
+if (no) out = !out // bit-wise negation
+
+zr: if (out == 0) zr = 1 else zr = 0
+if (out == 0) zr = 1 else zr = 0 // 16-bit equality comparison
+
+ng: if (out < 0) ng = 1 else ng = 0
+if (out < 0) ng = 1 else ng = 0 // two's complement comparison
+```
+
+### ALU Truth Table
+| zx | nx | zy | ny | f | no | out |
+|---|---|---|---|---|---|---|
+| 1 | 0 | 1 | 0 | 1 | 0 | 0 |
+| 1 | 1 | 1 | 1 | 1 | 1 | 1 |
+| 1 | 1 | 1 | 0 | 1 | 0 | -1 |
+| 0 | 0 | 1 | 1 | 0 | 0 | x |
+| 1 | 1 | 0 | 0 | 0 | 0 | y |
+| 0 | 0 | 1 | 1 | 0 | 1 | !x |
+| 1 | 1 | 0 | 0 | 0 | 1 | !y |
+| 0 | 0 | 1 | 1 | 1 | 1 | -x |
+| 1 | 1 | 0 | 0 | 1 | 1 | -y |
+| 0 | 1 | 1 | 1 | 1 | 1 | x+1 |
+| 1 | 1 | 0 | 0 | 1 | 0 | y-1 |
+| 0 | 0 | 0 | 0 | 1 | 0 | x+y |
+| 0 | 0 | 0 | 1 | 1 | 1 | y-x |
+| 0 | 0 | 0 | 0 | 0 | 0 | x&y |
+| 0 | 1 | 0 | 1 | 0 | 1 | x or y |
+### ALU Chip Diagram
+![ALU Chip Diagram](../static/02-boolean-arithmetic/alu.png)
+
