@@ -43,4 +43,31 @@ CHIP ALU {
 
     PARTS:
    // Put you code here:
+
+   // ZX & NX Control Bits
+   Mux16(a=x, b[0..15]=false, sel=zx, out=MuxOneOut);
+   Not16(in=MuxOneOut, out=NotMuxOneOut);
+   Mux16(a=MuxOneOut, b=NotMuxOneOut, sel=nx, out=MuxTwoOut);
+
+   // ZY & NY Control Bits
+   Mux16(a=y, b[0..15]=false, sel=zy, out=MuxThreeOut);
+   Not16(in=MuxThreeOut, out=NotMuxThreeOut);
+   Mux16(a=MuxThreeOut, b=NotMuxThreeOut, sel=ny, out=MuxFourOut);
+   
+   // F Control Bit
+   And16(a=MuxTwoOut, b=MuxFourOut, out=AndOut);
+   Add16(a=MuxTwoOut, b=MuxFourOut, out=AddOut);
+   Mux16(a=AndOut, b=AddOut, sel=f, out=MuxFiveOut);
+
+   // NO Control Bit
+   Not16(in=MuxFiveOut, out=NotMuxFiveOut);
+   
+   // NG Flag, Out
+   Mux16(a=MuxFiveOut, b=NotMuxFiveOut, sel=no, out=out, out[15]=ng, out[0..7]=ZROne, out[8..15]=ZRTwo);
+   
+   // ZR Flag
+   Or8Way(in=ZROne, out=OrOneOut);
+   Or8Way(in=ZRTwo, out=OrTwoOut);
+   Or(a=OrOneOut, b=OrTwoOut, out=OrThreeOut);
+   Not(in=OrThreeOut, out=zr);
 }
