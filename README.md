@@ -11,14 +11,17 @@ This project is to document my journey of creating a computer system from the gr
 ## Resources:
 - Book: https://mitpress.mit.edu/books/elements-computing-systems-second-edition
 - Website: https://www.nand2tetris.org/
-- Digital HDL Tool: https://github.com/hneemann/Digital
+- Digital HDL Tools: 
+  - https://github.com/hneemann/Digital
+  - https://github.com/SebLague/Digital-Logic-Sim
 - Nand2Tetris VS Code Plugin: https://marketplace.visualstudio.com/items?itemName=Throvn.nand2tetris
 
 ### Helper Commands
 - Running the Hardware Simulator
   - `sh tools/HardwareSimulator.sh`
-- Running the Digital HDL project:
+- Running the Digital HDL project (https://github.com/hneemann/Digital):
   - Clone the repo and build the jar
+  - From root of `Digital` project, build the jar via `mvn package`
   - Run jar via IntelliJ or from root of Digital project via `java -jar target/Digital.jar`
 
 ## Contents
