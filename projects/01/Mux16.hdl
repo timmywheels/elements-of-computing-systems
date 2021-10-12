@@ -31,5 +31,4 @@ CHIP Mux16 {
     Mux(a=a[13], b=b[13], sel=sel, out=out[13]);
     Mux(a=a[14], b=b[14], sel=sel, out=out[14]);
     Mux(a=a[15], b=b[15], sel=sel, out=out[15]);
-
 }

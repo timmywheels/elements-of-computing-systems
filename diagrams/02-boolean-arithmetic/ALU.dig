@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <circuit>
   <version>1</version>
-  <attributes/>
+  <attributes>
+    <entry>
+      <string>view4</string>
+      <transform>
+        <matrix>
+          <double>0.656481675392681</double>
+          <double>0.0</double>
+          <double>0.0</double>
+          <double>0.656481675392681</double>
+          <double>34.5726078155397</double>
+          <double>44.33304139560775</double>
+        </matrix>
+      </transform>
+    </entry>
+  </attributes>
   <visualElements>
     <visualElement>
       <elementName>Text</elementName>
@@ -15,7 +29,7 @@
           <string>Arithmetic Logic Unit (ALU)</string>
         </entry>
       </elementAttributes>
-      <pos x="220" y="-20"/>
+      <pos x="560" y="20"/>
     </visualElement>
     <visualElement>
       <elementName>Out</elementName>
@@ -206,7 +220,7 @@ else out == x &amp; y</string>
           <string>Control Bits</string>
         </entry>
       </elementAttributes>
-      <pos x="560" y="120"/>
+      <pos x="640" y="120"/>
     </visualElement>
     <visualElement>
       <elementName>Text</elementName>

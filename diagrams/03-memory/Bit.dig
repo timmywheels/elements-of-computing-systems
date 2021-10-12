@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>1</version>
+  <attributes/>
+  <visualElements>
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>Bit (1-bit Register)</string>
+        </entry>
+      </elementAttributes>
+      <pos x="420" y="120"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>flipSelPos</string>
+          <boolean>true</boolean>
+        </entry>
+      </elementAttributes>
+      <pos x="340" y="200"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>Out</string>
+        </entry>
+      </elementAttributes>
+      <pos x="700" y="220"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>In</string>
+        </entry>
+      </elementAttributes>
+      <pos x="240" y="200"/>
+    </visualElement>
+    <visualElement>
+      <elementName>D_FF</elementName>
+      <elementAttributes/>
+      <pos x="500" y="220"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>Load</string>
+        </entry>
+      </elementAttributes>
+      <pos x="360" y="160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Clock</elementName>
+      <elementAttributes>
+        <entry>
+          <string>small</string>
+          <boolean>true</boolean>
+        </entry>
+        <entry>
+          <string>runRealTime</string>
+          <boolean>true</boolean>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>Clock</string>
+        </entry>
+      </elementAttributes>
+      <pos x="480" y="240"/>
+    </visualElement>
+  </visualElements>
+  <wires>
+    <wire>
+      <p1 x="320" y="240"/>
+      <p2 x="340" y="240"/>
+    </wire>
+    <wire>
+      <p1 x="480" y="240"/>
+      <p2 x="500" y="240"/>
+    </wire>
+    <wire>
+      <p1 x="240" y="200"/>
+      <p2 x="340" y="200"/>
+    </wire>
+    <wire>
+      <p1 x="320" y="280"/>
+      <p2 x="640" y="280"/>
+    </wire>
+    <wire>
+      <p1 x="380" y="220"/>
+      <p2 x="500" y="220"/>
+    </wire>
+    <wire>
+      <p1 x="560" y="220"/>
+      <p2 x="640" y="220"/>
+    </wire>
+    <wire>
+      <p1 x="640" y="220"/>
+      <p2 x="700" y="220"/>
+    </wire>
+    <wire>
+      <p1 x="320" y="240"/>
+      <p2 x="320" y="280"/>
+    </wire>
+    <wire>
+      <p1 x="640" y="220"/>
+      <p2 x="640" y="280"/>
+    </wire>
+    <wire>
+      <p1 x="360" y="160"/>
+      <p2 x="360" y="200"/>
+    </wire>
+  </wires>
+  <measurementOrdering/>
+</circuit>
