@@ -15,7 +15,7 @@ the output will equal whatever the value of `in` is after the current clock cycl
 ![Bit Chip Diagram](../static/03-memory/bit.png)
 
 ## Register
-
+The **Register** chip behaves the same way as the **Bit** chip, except that the register is designed to handle 16-bit values.
 
 ### Register Chip API
 |Key|Value|
@@ -26,3 +26,16 @@ the output will equal whatever the value of `in` is after the current clock cycl
 
 ### Register Chip Diagram
 ![Register Chip Diagram](../static/03-memory/register.png)
+
+## RAM8
+The **RAM8** chip consists of 8 16-bit **Register** chips that can be selected and manipulated separately. It's important for any RAM chip implementation to ensure access to a value at a given memory address is near-instantaneous.
+
+### RAM8 Chip API
+|Key|Value|
+|---|---|
+|Input| `in[16]`, `load`, `address[k] (k=log2^n)`|
+|Output| `out[16]` |
+|Function| `if (load == 1) RAM[address] = in else out = RAM[address]` |
+
+### RAM8 Chip Diagram
+![RAM8 Chip Diagram](../static/03-memory/ram8.png)
