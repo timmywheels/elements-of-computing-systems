@@ -27,7 +27,7 @@ This project is to document my journey of creating a computer system from the gr
 ## Contents
 ### Hardware
 - [X] [Boolean Logic](./notes/01-boolean-logic.md)
-- [ ] [Boolean Arithmetic](./notes/02-boolean-arithmetic.md)
+- [X] [Boolean Arithmetic](./notes/02-boolean-arithmetic.md)
 - [ ] [Memory](./notes/03-memory.md)
 - [ ] [Machine Language](./notes/04-machine-language.md)
 - [ ] [Computer Architecture](./notes/05-computer-architecture.md)
