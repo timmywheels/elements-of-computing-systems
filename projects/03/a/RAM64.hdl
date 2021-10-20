@@ -13,7 +13,23 @@
 CHIP RAM64 {
     IN in[16], load, address[6];
     OUT out[16];
-
     PARTS:
     // Put your code here:
+
+    // pass 3 most-significant bits to dmux to find "outer" address
+    DMux8Way(in=load, sel=address[0..2], a=DMuxA, b=DMuxB, c=DMuxC, d=DMuxD, e=DMuxE, f=DMuxF, g=DMuxG, h=DMuxH);
+
+    // pass 3 least-significant bits to ram chip to determine 3-bit address (8 possible addresses)
+    RAM8(in=in, load=DMuxA, address=address[3..5], out=MemA);
+    RAM8(in=in, load=DMuxB, address=address[3..5], out=MemB);
+    RAM8(in=in, load=DMuxC, address=address[3..5], out=MemC);
+    RAM8(in=in, load=DMuxD, address=address[3..5], out=MemD);
+    RAM8(in=in, load=DMuxE, address=address[3..5], out=MemE);
+    RAM8(in=in, load=DMuxF, address=address[3..5], out=MemF);
+    RAM8(in=in, load=DMuxG, address=address[3..5], out=MemG);
+    RAM8(in=in, load=DMuxH, address=address[3..5], out=MemH);
+
+    // select the "outer" address used for output by using 3 most-significant bits
+    Mux8Way16(a=MemA, b=MemB, c=MemC, d=MemD, e=MemE, f=MemF, g=MemG, h=MemH, sel=address[0..2], out=out);
+
 }
