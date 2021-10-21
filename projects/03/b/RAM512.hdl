@@ -16,4 +16,20 @@ CHIP RAM512 {
 
     PARTS:
     // Put your code here:
+    // pass 3 most-significant bits to dmux to find "outer" address
+    DMux8Way(in=load, sel=address[0..2], a=DMuxA, b=DMuxB, c=DMuxC, d=DMuxD, e=DMuxE, f=DMuxF, g=DMuxG, h=DMuxH);
+    
+    // pass the 6 least-significant bits to ram chip to determine 6-bit address
+    RAM64(in=in, load=DMuxA, address=address[3..8], out=MemA);
+    RAM64(in=in, load=DMuxB, address=address[3..8], out=MemB);
+    RAM64(in=in, load=DMuxC, address=address[3..8], out=MemC);
+    RAM64(in=in, load=DMuxD, address=address[3..8], out=MemD);
+    RAM64(in=in, load=DMuxE, address=address[3..8], out=MemE);
+    RAM64(in=in, load=DMuxF, address=address[3..8], out=MemF);
+    RAM64(in=in, load=DMuxG, address=address[3..8], out=MemG);
+    RAM64(in=in, load=DMuxH, address=address[3..8], out=MemH);
+
+    // select the "outer" address used for output by using 3 most-significant bits
+    Mux8Way16(a=MemA, b=MemB, c=MemC, d=MemD, e=MemE, f=MemF, g=MemG, h=MemH, sel=address[0..2], out=out);
+
 }

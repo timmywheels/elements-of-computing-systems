@@ -16,4 +16,19 @@ CHIP RAM4K {
 
     PARTS:
     // Put your code here:
+    // pass 3 most-significant bits to dmux to find "outer" address (of the RAM chip)
+    DMux8Way(in=load, sel=address[0..2], a=DMuxA, b=DMuxB, c=DMuxC, d=DMuxD, e=DMuxE, f=DMuxF, g=DMuxG, h=DMuxH);
+    
+    // pass the 9 least-significant bits to ram chip to determine 9-bit address
+    RAM512(in=in, load=DMuxA, address=address[3..11], out=MemA);
+    RAM512(in=in, load=DMuxB, address=address[3..11], out=MemB);
+    RAM512(in=in, load=DMuxC, address=address[3..11], out=MemC);
+    RAM512(in=in, load=DMuxD, address=address[3..11], out=MemD);
+    RAM512(in=in, load=DMuxE, address=address[3..11], out=MemE);
+    RAM512(in=in, load=DMuxF, address=address[3..11], out=MemF);
+    RAM512(in=in, load=DMuxG, address=address[3..11], out=MemG);
+    RAM512(in=in, load=DMuxH, address=address[3..11], out=MemH);
+
+    // select the "outer" address used for output by using 3 most-significant bits
+    Mux8Way16(a=MemA, b=MemB, c=MemC, d=MemD, e=MemE, f=MemF, g=MemG, h=MemH, sel=address[0..2], out=out);
 }

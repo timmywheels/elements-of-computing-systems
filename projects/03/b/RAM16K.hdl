@@ -16,4 +16,15 @@ CHIP RAM16K {
 
     PARTS:
     // Put your code here:
+    // pass 2 most-significant bits to dmux to find "outer" address (of the RAM4K chip)
+    DMux4Way(in=load, sel=address[0..1], a=DMuxA, b=DMuxB, c=DMuxC, d=DMuxD);
+
+    // pass the 12 least-significant bits to ram chip to determine 14-bit address
+    RAM4K(in=in, load=DMuxA, address=address[2..13], out=MemA);
+    RAM4K(in=in, load=DMuxB, address=address[2..13], out=MemB);
+    RAM4K(in=in, load=DMuxC, address=address[2..13], out=MemC);
+    RAM4K(in=in, load=DMuxD, address=address[2..13], out=MemD);
+
+    // select the "outer" address used for output by using 2 most-significant bits
+    Mux4Way16(a=MemA, b=MemB, c=MemC, d=MemD, sel=address[0..1], out=out);
 }
