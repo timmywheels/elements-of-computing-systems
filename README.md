@@ -17,18 +17,22 @@ This project is to document my journey of creating a computer system from the gr
 - Nand2Tetris VS Code Plugin: https://marketplace.visualstudio.com/items?itemName=Throvn.nand2tetris
 
 ### Helper Commands
+### Sections 1, 2, & 3
 - Running the Hardware Simulator
   - `sh tools/HardwareSimulator.sh`
 - Running the Digital HDL project (https://github.com/hneemann/Digital):
   - Clone the repo and build the jar
   - From root of `Digital` project, build the jar via `mvn package`
   - Run jar via IntelliJ or from root of Digital project via `java -jar target/Digital.jar`
+### Section 4
+  - Running the CPU Emulator
+    - `sh tools/CPUEmulator.sh`
 
 ## Contents
 ### Hardware
 - [X] [Boolean Logic](./notes/01-boolean-logic.md)
 - [X] [Boolean Arithmetic](./notes/02-boolean-arithmetic.md)
-- [ ] [Memory](./notes/03-memory.md)
+- [X] [Memory](./notes/03-memory.md)
 - [ ] [Machine Language](./notes/04-machine-language.md)
 - [ ] [Computer Architecture](./notes/05-computer-architecture.md)
 - [ ] [Assembler](./notes/06-assembler.md)

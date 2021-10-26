@@ -1,4 +1,9 @@
-# Memory
+# Memory (Sequential Logic)
+
+Logic gates have proven to be simple and powerful, yet they lack one fundamental capability for computation -- the ability to store information (bits) over time. A computer's hardware must handle the time delays associated with processing and transporting data from one chip to another.
+
+## Data Flip-Flop (DFF)
+TODO
 
 ## Bit
 The **Bit** chip a.k.a the 1-bit **Register** is designed to hold a 1-bit value, `0` or `1`, over time. If the `load` bit is present, then
