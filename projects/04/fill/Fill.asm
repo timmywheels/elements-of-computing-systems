@@ -16,6 +16,6 @@
 @64
 D=A
 
-@SCREEN
+@SCREEN // RAM address 16384 -> 4000 in hexadecimal
 A=A+D
 M=-1
