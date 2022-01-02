@@ -116,7 +116,44 @@ of a for-loop.
 ## Symbols
 
 Unlike code that uses physical memory addresses (hard-coded), assembly code (which uses symbolic references) can be ran
-from any segment in memory. Code that mentions no physical addresses is said to be `relocatable`. 
+from any segment in memory. Code that mentions no physical addresses is said to be `relocatable`.
 
 ## Hack Language Specification
+
 ![Hack Instruction Set](../static/04-machine-language/hack-instruction-set.png)
+
+### The `A` Instruction
+
+Sets the `A` register to an arbitrary 15-bit value. The complete binary version of the `A` instruction consists of two
+fields: an operation code (`op-code`), which is `0` (the left-most bit), followed by 15 bits which represent a
+non-negative binary number.
+
+For example, the symbolic instruction `@5` represents `0000000000000101`.
+
+The `A` instruction serves three primary purposes:
+
+1. It provides the only way to enter a constant into the computer under program control
+2. It sets the stage for a subsequent `C` instruction that manipulates a selected RAM register, reffered to as `M`, by
+   first setting `A` to the address of that register.
+3. It sets the stage for a subsequent `C` instruction that specifies a `jump` by first setting `A` to the address of
+   the `jump` destination.
+
+### The `C` Instruction
+
+Answers three primary questions:
+
+1. What to compute (an `ALU` operation, denoted as `comp`)
+2. Where to store the computed value (denoted as `dest`)
+3. What to do next (denoted as `jump`)
+
+The complete binary version of the `C` instruction has it's left-most bit, it's `op-code`, set to `1`. The next two bits
+are not used, but by convention, are set to `1`. The next seven bits are the binary representation of the `comp` field, the next three bits are the binary representation of the `dest` field, and lastly, the final and right-most 3 bits are the binary representation of the `jump` field.
+
+Syntax Example: `op-code|arbitrary bits|comp|dest|jump`
+
+#### Computation Specification (`comp`)
+
+
+#### Destination Specification (`dest`)
+
+#### Jump Directive (`jump`)
