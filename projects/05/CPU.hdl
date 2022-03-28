@@ -40,4 +40,103 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
+
+    // ALU
+    Mux16(
+        // pins prefixed with 'c' to denote 'control' bits
+        a=false, 
+        b=instruction, 
+        sel=instruction[15], 
+        out[0]=cJGT, // LSB, jump greater than -- if > 0  then jump
+        out[1]=cJEQ, // jump equal to -- if == 0  then jump
+        out[2]=cJLT, // jump less than -- if < 0 then jump
+        out[3]=cDestM, // 
+        out[3]=writeM, // wire up pin 3 to multiple destinations
+        out[4]=cDestD, // 
+        out[5]=cDestA, //
+        out[6]=cNO, // if 1, negate the output
+        out[7]=cF, // if (1) out = x + y else if (0) out = x & y
+        out[8]=cNY, // negate the y input
+        out[9]=cZY, // zero the y input
+        out[10]=cNX, // negate the x input
+        out[11]=cZX, // zero the x input
+        out[12]=cAorM, // pass input to ALU from A reg or from incoming M value
+        // out[13]= // ignored according to spec
+        // out[14]= // ignored according to spec
+        out[15]=cType // MSB, if == 0, 'a' instruction, else == '1', 'c' instruction
+    );
+    ALU(
+        x=XIn, 
+        y=YIn, 
+        zx=cZX, 
+        nx=cNX, 
+        zy=cZY, 
+        ny=cNY, 
+        f=cF, 
+        no=cNO, 
+        out=ALUOut,
+        out=outM,
+        zr=Zero,
+        ng=Neg
+    );
+    Or(a=Zero, b=Neg, out=LTEQOut);
+    Not(in=LTEQOut, out=Pos);
+
+    // A Register
+    Mux16(a=instruction, b=ALUOut, sel=cType, out=AMuxOut);
+    Mux16(a=ARegOut, b=inM, sel=cAorM, out=YIn);
+    // Loading the A Register
+    Not(in=cType, out=NotCType);
+    Or(a=NotCType, b=cDestA, out=LoadA);
+    ARegister(in=AMuxOut, load=LoadA, out=ARegOut, out[0..14]=addressM);
+    
+    // D Register
+    DRegister(in=ALUOut, load=cDestD, out=XIn);
+    
+    
+    // Jump Logic & Program Counter
+    And(a=cJLT, b=Neg, out=NegOut);
+    And(a=cJEQ, b=Zero, out=ZeroOut);
+    And(a=cJGT, b=Pos, out=PosOut);
+    Or(a=NegOut, b=ZeroOut, out=NegOrZeroOut);
+    Or(a=NegOrZeroOut, b=PosOut, out=JumpOut);
+    PC(in=ARegOut, load=JumpOut, inc=true, reset=reset, out[0..14]=pc, out[15]=false);
+    
+
+    // Reset handler
+
 }
+
+/*
+
+    Notes:
+
+    A-instruction
+    - always starts w/ 0 as op-code
+    
+    0xxxxxxxxxxxxxxx
+    
+    x = 15-bit address
+
+    C-instruction
+    - always starts w/ 1 as op-code
+    
+    1xxaccccccdddjjj
+    
+    x = ignored bits
+
+    a = 'comp' part of instruction
+        - used to determine whether the ALU input is fed from
+          the A register, or the incoming M value
+
+    c = 'comp' part of instruction
+        - used to determine which operation the ALU will compute
+
+    d = 'dest' part of instruction
+        - used to determine which registers should accept the ALU output
+
+    j = 'jump' part of instruction
+        - used to determine which instruction to fetch next
+
+
+*/

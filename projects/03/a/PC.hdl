@@ -19,7 +19,15 @@ CHIP PC {
     // Put your code here:
     Register(in=ResetMuxOut, load=true, out=out, out=RegOut);
     Inc16(in=RegOut, out=IncOut);
+    
+    
+
     Mux16(a=LoadMuxOut, b[0..15]=false, sel=reset, out=ResetMuxOut); // reset mux
+    
+    
     Mux16(a=IncMuxOut, b=in, sel=load, out=LoadMuxOut); // load mux
+    
+    
+    
     Mux16(a=RegOut, b=IncOut, sel=inc, out=IncMuxOut); // inc mux
 }

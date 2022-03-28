@@ -28,4 +28,63 @@ CHIP Memory {
 
     PARTS:
     // Put your code here:
+    /*
+        https://www.binary-code.org/
+        
+        Note: All addresses are 15 bits
+        RAM16K binary address range: 000 0000 0000 0000 - 011 1111 1111 1111
+        Screen binary address range: 100 0000 0000 0000 - 101 1111 1111 1111
+        Keyboard binary address: 110 0000 0000 0000
+
+    */
+
+    /*
+        DMux4Way spec:
+         * {a, b, c, d} = {in, 0, 0, 0} if sel == 00
+         *                {0, in, 0, 0} if sel == 01
+         *                {0, 0, in, 0} if sel == 10
+         *                {0, 0, 0, in} if sel == 11
+    */
+
+    /* 
+        Select the two left-most bits of address input via address[13..14]
+        
+        Note that:
+        - RAM16k addresses will start with either 00 or 01
+        - screen addresses will start with 10
+        - keyboard address startes with 11
+
+        All of which align nicely with the DMux4Way spec shown above
+    */
+    DMux4Way(in=load, sel=address[13..14], a=RamSelA, b=RamSelB, c=ScreenSel, d=KeyboardSel);
+    
+    // if any RAM16k address is selected in dmux, 
+    // load input for ram chip below becomes `1`
+    Or(a=RamSelA, b=RamSelB, out=RamSel);
+
+    // ignore left-most (msb) because it's always 0, 
+    // additionally the RAM16k chip only accepts a 14-bit address
+    RAM16K(in=in, load=RamSel, address=address[0..13], out=RamOut);
+
+    // ignore the 2 left-most bits because they will always be `10` in the
+    // screen memory map, additionally the Screen chip only accepts a 13-bit address
+    Screen(in=in, load=ScreenSel, address=address[0..12], out=ScreenOut);
+
+    Keyboard(out=KeyboardOut);
+    
+    /*
+        Mux4Way16 spec:
+         * 4-way 16-bit multiplexor:
+         * out = a if sel == 00
+         *       b if sel == 01
+         *       c if sel == 10
+         *       d if sel == 11
+
+          S                                                                                                                                                                                                                                                                                                                                                                                                                                                                         imilarly to the DMux4Way, we want to output to the selected memorymap 
+          based on the 2 left-most bits in the address input:
+            - RAM16k: 00 or 01
+            - Screen: 10
+            - Keyboard: 11
+    */
+    Mux4Way16(a=RamOut, b=RamOut, c=ScreenOut, d=KeyboardOut, sel=address[13..14], out=out);
 }
