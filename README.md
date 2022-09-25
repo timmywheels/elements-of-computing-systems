@@ -27,14 +27,19 @@ This project is to document my journey of creating a computer system from the gr
 ### Section 4
   - Running the CPU Emulator
     - `sh tools/CPUEmulator.sh`
+### Section 6
+  - Running the Assembler
+    - `sh tools/Assembler.sh`
+  - Running the CPU Emulator
+    - `sh tools/CPUEmulator.sh`
 
 ## Contents
 ### Hardware
 - [X] [Boolean Logic](./notes/01-boolean-logic.md)
 - [X] [Boolean Arithmetic](./notes/02-boolean-arithmetic.md)
 - [X] [Memory](./notes/03-memory.md)
-- [ ] [Machine Language](./notes/04-machine-language.md)
-- [ ] [Computer Architecture](./notes/05-computer-architecture.md)
+- [X] [Machine Language](./notes/04-machine-language.md)
+- [X] [Computer Architecture](./notes/05-computer-architecture.md)
 - [ ] [Assembler](./notes/06-assembler.md)
 
 ### Software
